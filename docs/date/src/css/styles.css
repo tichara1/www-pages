@@ -1,0 +1,16 @@
+html, body { margin: 0; padding: 0; height: 100%; background: #2a2622; font-family: 'Inter', -apple-system, system-ui, sans-serif; }
+* { box-sizing: border-box; }
+#root { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+button { font-family: inherit; }
+
+@keyframes screenIn {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes sheetIn  { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+@keyframes sheetOut { 0% { transform: translateY(0); } 100% { transform: translateY(100%); } }
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut  { from { opacity: 1; } to { opacity: 0; } }
+@keyframes letterOpen { 0% { opacity: 0; transform: translateY(6px); } 100% { opacity: 1; transform: translateY(0); } }
+
+::-webkit-scrollbar { width: 0; height: 0; }
