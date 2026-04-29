@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Évora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/qrcode-generator@1.4.4/qrcode.js" crossorigin="anonymous"></script>
+<script>window.Evora = window.Evora || {};</script>
+</head>
+<body>
+<div id="root"></div>
+<script src="lib/tokens.js"></script>
+<script src="lib/i18n/cs.js"></script>
+<script src="lib/i18n/en.js"></script>
+<script src="lib/i18n.js"></script>
+<script src="data/places.js"></script>
+<script src="lib/share.js"></script>
+<script src="lib/ics.js"></script>
+<script src="lib/canvas-invite.js"></script>
+<script src="lib/store.js"></script>
+<script type="text/babel" src="ui/primitives.jsx"></script>
+<script type="text/babel" src="ui/olive-branch.jsx"></script>
+<script type="text/babel" src="ui/lang-switch.jsx"></script>
+<script type="text/babel" src="screens/entry.jsx"></script>
+<script type="text/babel" src="screens/couple.jsx"></script>
+<script type="text/babel" src="screens/mode.jsx"></script>
+<script type="text/babel" src="screens/config.jsx"></script>
+<script type="text/babel" src="screens/summary.jsx"></script>
+<script type="text/babel" src="screens/surprise.jsx"></script>
+<script type="text/babel" src="screens/confirmed.jsx"></script>
+<script type="text/babel" src="screens/places.jsx"></script>
+<script type="text/babel" src="screens/history.jsx"></script>
+<script type="text/babel" src="screens/app.jsx"></script>
+<script type="text/babel">
+  function Mount() {
+    return (
+      <div style={{ position: 'relative', width: '100vw', height: '100dvh', overflow: 'hidden', background: '#F5F1EA' }}>
+        <App />
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Mount />);
+</script>
+</body>
+</html>
