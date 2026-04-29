@@ -2,6 +2,9 @@
   window.Evora = window.Evora || {};
   const E = window.Evora;
 
+  // Persistence note: this module READS `evora.v1.lang` for initial detection
+  // but never writes to localStorage. The store (lib/store.js) owns writes
+  // to the `evora.v1` key. Do not add localStorage.setItem here.
   let currentLang = (function detect() {
     try {
       const stored = localStorage.getItem('evora.v1');
