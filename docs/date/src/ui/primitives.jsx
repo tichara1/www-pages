@@ -53,7 +53,7 @@
     return (
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '12px 24px', minHeight: 44,
+        padding: '12px 24px', paddingTop: 'max(12px, env(safe-area-inset-top, 12px))', minHeight: 44,
       }}>
         <button onClick={onBack} style={{
           background: 'none', border: 'none', cursor: onBack ? 'pointer' : 'default',
@@ -101,7 +101,7 @@
         <div onClick={close} style={{ position: 'absolute', inset: 0, background: 'rgba(31,27,22,0.45)' }}/>
         <div style={{
           position: 'absolute', left: 0, right: 0, bottom: 0,
-          background: E.C.cream, padding: '20px 24px 28px',
+          background: E.C.cream, padding: '20px 24px', paddingBottom: 'max(28px, env(safe-area-inset-bottom, 28px))',
           animation: closing ? 'sheetOut 320ms cubic-bezier(0.22, 1, 0.36, 1) both' : 'sheetIn 360ms cubic-bezier(0.22, 1, 0.36, 1) both',
           maxHeight: '85%', overflowY: 'auto',
         }}>
