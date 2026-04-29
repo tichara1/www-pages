@@ -102,10 +102,11 @@ Single `useStore()` hook backed by React Context. Shape:
   back(),
 
   draft: {
-    couple: 'her' | 'him' | 'them' | null,
-    mode: 'classic' | 'cozy' | 'adventure' | null,
-    config: { dinner:{on,...}, drinks:{on,...}, walk:{on,...}, ... },
-    placeIds: { dinner: 'p_12', drinks: 'p_07', ... },
+    couple: 'new' | 'long' | null,
+    path: 'config' | 'surprise' | null,           // which mode-screen path was chosen
+    enabled: { experience:bool, dinner:bool, gift:bool, transport:bool, accommodation:bool },
+    values:  { experience:{...}, dinner:{...}, gift:{...}, transport:{...}, accommodation:{...} },
+    placeIds: { experience?: 'p_03', dinner?: 'p_12' },   // only sections that map to a place
     date: ISOString | null,
   },
   updateDraft(patch),
@@ -180,14 +181,14 @@ No search input in F1 (30 records do not justify it).
 
 ### Place selection inside Config flow
 
-The existing `BottomSheet` for each enabled section (dinner, drinks, walk, etc.) gains a `Place` field:
+Only the two sections that naturally map to a place — `experience` (activity) and `dinner` (restaurant) — gain a `Place` field in their bottom sheet. `gift`, `transport`, and `accommodation` keep their existing dropdown selectors only.
 
 ```
 Place
 [ Choose a place ▼ ]
 ```
 
-Tapping it opens a secondary sheet listing places filtered by the section's natural category (`dinner → restaurant`, `drinks → bar`, `walk → activity`, etc.). Favorites appear at the top. A `Skip — type your own` option keeps the existing free-text fallback.
+Tapping it opens a secondary sheet listing places filtered by the section's natural category (`dinner → restaurant`, `experience → activity`). Favorites appear at the top. A `Skip — none` option clears the selected place so the section falls back to its dropdown values only.
 
 ### History screen (`screens/history.jsx`)
 
@@ -295,7 +296,7 @@ encodeShared(draft) → string     // base64url(JSON)
 decodeShared(string) → draft | null
 ```
 
-- Encoded fields: `couple`, `mode`, `placeIds`, `date`, `lang`. The `config` object is intentionally excluded for size; the receiver re-derives section toggles from the keys present in `placeIds` and from `mode` defaults.
+- Encoded fields: `couple`, `path`, `enabled`, `values`, `placeIds`, `date`, `lang`. The full draft is small (a few hundred bytes after base64url) so we send it whole rather than re-deriving on receipt.
 - Output is base64url (URL-safe, no padding). Decoding catches all errors and returns `null`.
 
 ### Read-only shared view
