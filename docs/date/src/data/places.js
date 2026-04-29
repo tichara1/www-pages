@@ -45,4 +45,9 @@
     P('p_29','Wine Tasting Karlín','Karlín Wine Tasting','activity','Šest vín, sklepy v Karlíně.','Six wines, Karlín cellars.','$$',['indoor','wine','quiet'],90,['evening']),
     P('p_30','Late Gallery Walk','Late Gallery Walk','activity','Dlouhý čtvrteční noktur galerií.','Thursday late-night gallery walk.','$',['walk-friendly','indoor','quiet'],90,['evening']),
   ];
+
+  const byId = Object.create(null);
+  for (const p of window.Evora.PLACES) byId[p.id] = p;
+  window.Evora.PLACE_BY_ID = byId;
+  window.Evora.getPlace = (id) => (id && byId[id]) || null;
 })();
